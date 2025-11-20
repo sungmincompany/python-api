@@ -1,0 +1,904 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.124.184.125 - - [18/Nov/2025 17:06:47] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:06:48] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251118&prg_cd=110 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:06:53] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251111&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:06:56] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251117&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:06:58] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:06:58] "GET /api/select/data/process-equip?v_db=16_UR&prg_cd=110&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:07:02] "GET /api/select/data/jepum-defect-rate?v_db=16_UR&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:07:05] "GET /api/select/data/jepum-equip-defect-rate?v_db=16_UR&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:07:07] "GET /api/select/data/line-defect-rate?v_db=16_UR&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:07:10] "GET /api/select/data/descriptive?v_db=16_UR&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:07:15] "GET /api/analysis/xy-options?v_db=16_UR HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:07:25] "GET /api/analysis/dynamic-analysis?v_db=16_UR&from_dt=20250814&to_dt=20251118&gbn_x=x&col_1_x=NODie&gbn_y=y&col_1_y=WireSag HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:07:30] "GET /api/analysis/dynamic-analysis?v_db=16_UR&from_dt=20250814&to_dt=20251118&gbn_x=x&col_1_x=CenterOFF&gbn_y=y&col_1_y=WireSag HTTP/1.1" 400 -
+13.124.184.125 - - [18/Nov/2025 17:09:33] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:09:33] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:09:33] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.125.176.151 - - [18/Nov/2025 17:10:32] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:10:39] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:10:39] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251118&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:10:39] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:10:49] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:10:49] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251118&to_dt=20251118 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:10:49] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:11:28] "POST /api/insert/suju/register?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:35] "PUT /api/update/suju/update?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:41] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:11:41] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251018&to_dt=20251118 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:46] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:46] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:46] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251118&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:49] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:49] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:49] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:53] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:11:54] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:11:54] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:54] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:11:55] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:11:55] "GET /api/select/suju/all?v_db=25_DO&from_dt=20251118&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:55] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:11:55] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:12:02] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:12:02] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:12:02] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:12:17] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251016A-25 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:12:30] "POST /api/insert/etc/test-result?v_db=16_UR HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:12:30] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.125.176.151 - - [18/Nov/2025 17:12:39] "DELETE /api/delete/etc/test-result?v_db=16_UR&lot_no=1118-1711-7 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:12:39] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:18:29] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:18:29] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251118&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:18:33] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251012&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:18:39] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20250927&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:18:43] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251017&prg_cd=110 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:18:45] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251016&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:18:48] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20250914&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:18:53] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20250811&prg_cd=110 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:19:07] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:19:07] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:19:07] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:32:01] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:32:01] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:32:01] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+3.34.133.78 - - [18/Nov/2025 17:32:11] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+13.124.90.41 - - [18/Nov/2025 17:32:22] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [18/Nov/2025 17:36:39] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251118 HTTP/1.1" 200 -
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+3.35.131.110 - - [19/Nov/2025 10:08:37] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 10:08:37] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 10:08:37] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+13.125.192.236 - - [19/Nov/2025 10:08:53] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 10:09:04] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+8.211.51.235 - - [19/Nov/2025 10:09:16] code 400, message Bad request version ('\xc0\x13\xc0')
+8.211.51.235 - - [19/Nov/2025 10:09:16] "\x16\x03\x01\x00\xee\x01\x00\x00\xea\x03\x03I\x06²\xf9¼\x99i\xc0Y\xfbøºe-\x83Ud]\x0e\x8d·b8´gÆ\xdd9dZ8f g\xc1\x81i³\xf6\xf2\xcb°\xa9\x19N\xd6½\x95g|p\xfc\xe9<Z¡\x90T·\xe9\xa58'O;\x00&\xc0+\xc0/\xc0,\xc00\xcc\xa9\xcc¨\xc0\x09\xc0\x13\xc0" HTTPStatus.BAD_REQUEST -
+13.125.192.236 - - [19/Nov/2025 10:09:22] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+8.211.51.235 - - [19/Nov/2025 10:09:27] "GET / HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 10:09:32] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 10:09:32] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 10:09:32] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+123.160.223.78 - - [19/Nov/2025 10:10:33] "GET / HTTP/1.1" 200 -
+123.160.223.78 - - [19/Nov/2025 10:10:33] "GET /favicon.ico HTTP/1.1" 404 -
+43.203.239.240 - - [19/Nov/2025 12:01:33] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 12:01:33] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+43.203.239.240 - - [19/Nov/2025 12:01:33] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 12:08:29] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+43.203.239.240 - - [19/Nov/2025 12:08:29] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 12:08:29] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 12:50:08] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 12:50:08] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+43.203.239.240 - - [19/Nov/2025 12:50:08] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+107.172.58.36 - - [19/Nov/2025 14:18:05] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:51] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:51] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:51] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:51] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/jepum/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/vender/out?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:21:52] "GET /api/select/stock/jepum-out?v_db=25_DO&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:22:32] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:18] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:19] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:19] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:19] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:29] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:29] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:29:48] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:17] "GET /api/select/stock/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:45] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:45] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:45] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:45] "GET /api/select/suju/all?v_db=97_GM&from_dt=20251119&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:45] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:46] "GET /api/select/suju/all?v_db=97_GM&from_dt=20251119&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:34:58] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 15:35:03] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=19990101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:04:44] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:04:44] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:04:44] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:04:45] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=19990101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:39] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:07:40] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:56] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:57] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:08:57] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:09:10] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:09:10] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:09:11] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:09:11] "GET /api/select/stock/jepum-out?v_db=97_GM&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\resources\\select.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.124.184.125 - - [19/Nov/2025 16:48:28] "GET /api/select/segsan/process?v_db=16_UR&prg_cd=170&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 16:48:43] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 16:48:43] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 16:48:43] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\resources\\select.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+ * Detected change in 'D:\\python-api\\resources\\select.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+ * Detected change in 'D:\\python-api\\resources\\select.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [19/Nov/2025 16:51:13] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:51:13] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:51:24] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:51:24] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:53:47] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:53:48] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:54:00] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:54:01] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:54:01] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:54:01] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+198.235.24.40 - - [19/Nov/2025 16:54:38] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:55:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:55:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:55:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:55:54] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:57:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:57:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:57:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 16:57:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:01:23] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:01:23] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:04:42] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:04:42] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:05:06] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:05:06] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:07:26] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:07:26] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:07:26] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:07:26] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:10:10] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:10:10] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:11:09] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:11:09] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+43.203.239.240 - - [19/Nov/2025 17:24:28] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251023B-24 HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 17:26:15] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251023B-24 HTTP/1.1" 200 -
+43.203.239.240 - - [19/Nov/2025 17:26:53] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251110B-05 HTTP/1.1" 200 -
+13.124.184.125 - - [19/Nov/2025 17:27:33] "POST /api/insert/etc/test-result?v_db=16_UR HTTP/1.1" 200 -
+3.35.131.110 - - [19/Nov/2025 17:27:33] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251119 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:36] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:36] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:27:53] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:05] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:05] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:23] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:23] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:28:27] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\main.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 24, in <module>
+    from routes.segsan import segsan_bp
+ImportError: cannot import name 'segsan_bp' from 'routes.segsan' (D:\python-api\routes\segsan.py)
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [19/Nov/2025 17:58:05] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:58:05] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:58:09] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:58:09] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:32] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:32] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:35] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:35] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:43] "POST /api/segsan/insert?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:52] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 17:59:52] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\segsan.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [19/Nov/2025 18:09:59] "POST /api/segsan/insert?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:23:37] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:23:38] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:24:22] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:24:22] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\common.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [19/Nov/2025 18:35:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 404 -
+192.168.10.1 - - [19/Nov/2025 18:35:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 404 -
+ * Detected change in 'D:\\python-api\\main.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 25, in <module>
+    from routes.common import common_bp  # \U0001f448 추가!
+  File "D:\python-api\routes\common.py", line 3, in <module>
+    @common_bp.route('/jepum', methods=['GET'])
+NameError: name 'common_bp' is not defined
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 25, in <module>
+    from routes.common import common_bp  # \U0001f448 추가!
+  File "D:\python-api\routes\common.py", line 3, in <module>
+    @common_bp.route('/jepum', methods=['GET'])
+NameError: name 'common_bp' is not defined
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 25, in <module>
+    from routes.common import common_bp  # \U0001f448 추가!
+  File "D:\python-api\routes\common.py", line 3, in <module>
+    @common_bp.route('/jepum', methods=['GET'])
+NameError: name 'common_bp' is not defined
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 25, in <module>
+    from routes.common import common_bp  # \U0001f448 추가!
+  File "D:\python-api\routes\common.py", line 3, in <module>
+    @common_bp.route('/jepum', methods=['GET'])
+NameError: name 'common_bp' is not defined
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [19/Nov/2025 18:42:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:42:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:42:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [19/Nov/2025 18:42:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+Traceback (most recent call last):
+  File "D:\python-api\main.py", line 21, in <module>
+    from resources.analysis import analysis_bp
+  File "D:\python-api\resources\analysis.py", line 12, in <module>
+    from sklearn.linear_model import LinearRegression
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\linear_model\__init__.py", line 11, in <module>
+    from ._coordinate_descent import (
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\linear_model\_coordinate_descent.py", line 20, in <module>
+    from ..model_selection import check_cv
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\model_selection\__init__.py", line 3, in <module>
+    from ._plot import LearningCurveDisplay, ValidationCurveDisplay
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\model_selection\_plot.py", line 7, in <module>
+    from ._validation import learning_curve, validation_curve
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\model_selection\_validation.py", line 29, in <module>
+    from ..metrics import check_scoring, get_scorer_names
+  File "C:\Users\dev\AppData\Local\Programs\Python\Python38\lib\site-packages\sklearn\metrics\__init__.py", line 49, in <module>
+    from ._regression import (
+  File "<frozen importlib._bootstrap>", line 991, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 975, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 671, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 844, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 939, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1037, in get_data
+KeyboardInterrupt
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+15.165.74.218 - - [20/Nov/2025 09:15:13] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.124.165.204 - - [20/Nov/2025 09:15:13] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 09:15:13] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251120 HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 09:57:37] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 09:57:37] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 09:57:37] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251120 HTTP/1.1" 200 -
+13.124.165.204 - - [20/Nov/2025 10:00:09] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+3.35.131.110 - - [20/Nov/2025 10:00:09] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251120 HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 10:00:09] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+3.35.131.110 - - [20/Nov/2025 10:00:20] "GET /api/select/stock/jepum?v_db=25_DO HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:01:08] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:01:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:01:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:01:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:09:07] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:09:07] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:10:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:10:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:10:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 10:10:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:16:39] "POST /api/segsan/insert?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:16:53] "POST /api/segsan/insert?v_db=97_GM HTTP/1.1" 200 -
+3.35.131.110 - - [20/Nov/2025 11:17:22] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251104A-07 HTTP/1.1" 200 -
+3.35.131.110 - - [20/Nov/2025 11:19:54] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.124.165.204 - - [20/Nov/2025 11:19:54] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+15.165.74.218 - - [20/Nov/2025 11:19:54] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251101&to_dt=20251120 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:20:22] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:20:22] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:20:42] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:20:42] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:20:52] "POST /api/segsan/insert?v_db=97_GM HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\segsan.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [20/Nov/2025 11:40:03] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:40:04] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:40:04] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:40:04] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:40:40] "GET /api/segsan/list?v_db=97_GM&from_dt=20251120&to_dt=20251120 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:00] "PUT /api/segsan/update?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:00] "GET /api/segsan/list?v_db=97_GM&from_dt=20251120&to_dt=20251120 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:37] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:37] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:37] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:37] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:41] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:59] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:42:59] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:16] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:27] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:39] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:47] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:47] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:43:48] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:44:22] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:46:36] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:46:39] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:47:31] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:47:31] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:47:55] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:05] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:05] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:06] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:11] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:12] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:12] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:48:44] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:49:11] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:49:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:49:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:50:07] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:50:07] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:50:18] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:27] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:27] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:28] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:31] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:31] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:32] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:45] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:45] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:52:45] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:53:55] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:53:55] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:53:55] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:54:05] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:54:43] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:55:02] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:40] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:48] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:51] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:51] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:52] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:56:55] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:57:00] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:57:01] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:57:02] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:57:45] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:57:49] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:58:04] "PUT /api/segsan/update?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:58:04] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:59:02] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:59:06] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 11:59:08] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:47:46] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:51:04] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:51:04] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:16] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:16] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:29] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:29] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:36] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:36] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:40] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:46] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:46] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:55:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:56:11] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:56:27] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:56:27] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:58:24] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:58:28] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:58:28] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 14:58:33] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:00] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:00] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:00] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:06] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:07] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:10] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:16] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:29] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:29] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:43] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:47] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:47] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:47] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:50] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:09:59] "GET /api/segsan/list?v_db=97_GM&from_dt=20231101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:02] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:02] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:03] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:09] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:09] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:39] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:45] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:10:45] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:43] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:54] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:11:55] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:12:53] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:15:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:15:18] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:15:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:15:40] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:04] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:11] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:28] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:29] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:46] "GET /api/segsan/list?v_db=97_GM&from_dt=20241101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:57] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:57] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:16:58] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:18:11] "PUT /api/segsan/update?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:18:11] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:25:08] "GET /api/select/stock/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:25:08] "GET /api/select/stock/jepum?v_db=97_GM HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\stock.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+ * Detected change in 'D:\\python-api\\routes\\stock.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+192.168.10.1 - - [20/Nov/2025 15:36:37] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:36:37] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:36:53] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:36:56] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:05] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:13] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:35] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:36] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:42] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:37:42] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:40:06] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:40:06] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:40:18] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:40:22] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:40:22] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:41] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:41] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:44] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:53] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:53] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:57] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:42:57] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:02] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:03] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:06] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:19] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:20] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:28] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:28] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:32] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:33] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:38] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:43:38] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:45:30] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:45:30] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:45:34] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:45:34] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:46:17] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:46:17] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:46:41] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:46:41] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+138.197.128.210 - - [20/Nov/2025 15:47:03] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:47:49] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:47:49] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:47:54] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:47:54] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:49:59] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:49:59] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:06] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:06] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:14] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:19] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:19] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:21] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:50:30] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:17] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:23] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:31] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:31] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:40] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:46] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:46] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:57] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:51:57] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:08] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:08] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:19] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:47] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:47] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:52:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:02] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:07] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:12] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:15] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:21] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:24] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:31] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:32] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:34] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:35] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:38] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:40] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:55:53] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:21] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:21] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:23] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:26] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:26] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:27] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:28] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:31] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:31] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:45] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:45] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:57] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:56:58] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:57:00] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:57:04] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:57:04] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:58:27] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:58:35] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:58:38] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:59:16] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:59:16] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:59:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:59:33] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 15:59:33] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:00:50] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:00:50] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:01:10] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:01:11] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:01:17] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:02:08] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=02 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:02:13] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:02:16] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:02:57] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:02:57] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:05:54] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:05:55] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:05:59] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:36] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:36] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:40] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:40] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:43] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:43] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:49] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:49] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:54] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:06:55] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:01] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:01] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:01] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:01] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:09] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:09] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:09] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:09] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:16] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:17] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:17] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:17] "GET /api/stock/list?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:07:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:10:26] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:10:26] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:10:52] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:10:52] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+198.235.24.162 - - [20/Nov/2025 16:19:15] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:22:06] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:22:06] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:22:10] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:22:10] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:23:24] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:23:24] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:23:48] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:23:48] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:24:19] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:24:19] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:27:00] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:27:00] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:27:10] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:27:10] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:28:53] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:28:53] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:29:27] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:30:15] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:30:15] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:36:02] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:36:02] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:36:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:36:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:37:57] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:37:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:09] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:17] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:40:17] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:43] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:49] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:49] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:52] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:41:52] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:42:03] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:42:11] "PUT /api/segsan/update?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:42:11] "GET /api/segsan/list?v_db=97_GM&from_dt=20251101&to_dt=20251130 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:36] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:36] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:39] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:39] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:41] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:41] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:42] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:44] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:51] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:43:51] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:33] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:33] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:44] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:44] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:48] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:44:48] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:14] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:16] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:16] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:19] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:20] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:59] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:59] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:59] "GET /api/select/suju/all?v_db=97_GM&from_dt=20251120&to_dt=20251120 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:45:59] "GET /api/select/jepum/jepum?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:00] "GET /api/select/vender/out?v_db=97_GM HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:00] "GET /api/select/suju/all?v_db=97_GM&from_dt=20251120&to_dt=20251120 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:02] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:02] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:05] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:05] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:44] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:44] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:48] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:48] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:53] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:53] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:58] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:46:59] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:03] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:03] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:05] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:06] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:29] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:29] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:33] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:48:33] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:50:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:50:28] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:52:36] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:52:38] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:52:38] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:52:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:52:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:53:32] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:53:32] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:53:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:53:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:54:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:54:50] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:55:18] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:55:18] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:55:34] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:55:38] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:55:38] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:56:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:56:35] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:56:42] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 16:56:42] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 17:06:30] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 17:06:30] "GET /api/stock/list?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 17:11:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
+192.168.10.1 - - [20/Nov/2025 17:11:18] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
