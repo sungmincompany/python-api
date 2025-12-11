@@ -24,6 +24,7 @@ from resources.analysis import analysis_bp
 from routes.segsan import segsan_bp
 from routes.common import common_bp  # 👈 추가!
 from routes.stock import stock_bp
+from routes.chulha import chulha_bp  # 👈 추가!
 
 def create_app():
     """
@@ -76,6 +77,7 @@ def create_app():
         (segsan_bp, "/api/segsan"),
         (common_bp, "/api/common"), # 공통(기준정보) 관련 👈 추가!
         (stock_bp,  "/api/stock"), # 재고관리 관련 👈 추가!
+        (chulha_bp, "/api/chulha"), # 출하실적 관련 👈 추가!
     ]
 
     # 루프를 통해 리스트에 있는 모든 블루프린트를 자동으로 등록합니다.

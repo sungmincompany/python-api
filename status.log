@@ -12,3 +12,103 @@
  * Debug mode: on
  * Serving Flask app 'main'
  * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+8 dev
+7 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+8 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+6 dev
+8 dev
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+6 dev
+7 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+7 dev
+8 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+8 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]들어오는 TDS(Tabular Data Stream)의 RPC(원격 프로시저 호출) 프로토콜 스트림이 잘못되었습니다. 매개 변수 7(""): 제공된 값이 데이터 형식 float의 잘못된 인스턴스입니다. 원본 데이터에 잘못된 값이 있는지 확인하십시오. 잘못된 값의 예로는 소수 자릿수가 전체 자릿수보다 큰 숫자 형식의 데이터를 들 수 있습니다. (8023) (SQLExecDirectW)')
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on
+6 dev
+6 dev
+7 dev
+6 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+7 dev
+7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+ * Serving Flask app 'main'
+ * Debug mode: on

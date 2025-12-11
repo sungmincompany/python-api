@@ -47,3 +47,48 @@ def get_jepum_list():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# ==========================================
+# [수정됨] 거래처(Vender) 목록 조회
+# 파라미터: v_db, tab_gbn_cd (01:매출처, 02:매입처 등)
+# ==========================================
+@common_bp.route('/vender', methods=['GET'])
+def get_vender_list():
+    v_db = request.args.get("v_db")
+    tab_gbn_cd = request.args.get("tab_gbn_cd") # 파라미터 받기
+
+    if not v_db:
+        return jsonify({"error": "v_db 파라미터가 필요합니다."}), 400
+
+    try:
+        conn = get_db_connection(v_db)
+        cur = conn.cursor()
+
+        # 1. 기본 쿼리 (vender_code 테이블)
+        sql = "SELECT vender_cd, vender_nm FROM vender_code WHERE 1=1"
+        params = []
+
+        # 2. 구분 코드가 있으면 조건 추가
+        if tab_gbn_cd:
+            sql += " AND tab_gbn_cd = ?"
+            params.append(tab_gbn_cd)
+
+        sql += " ORDER BY vender_nm"
+        
+        cur.execute(sql, tuple(params))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for row in rows:
+            # 리액트에서 사용할 키 이름도 'vender_'로 통일
+            data.append({
+                "vender_cd": row[0],
+                "vender_nm": row[1]
+            })
+
+        return jsonify(data), 200
+
+    except Exception as e:
+        print(f"Error fetching vender list: {str(e)}")
+        return jsonify({"error": str(e)}), 500
