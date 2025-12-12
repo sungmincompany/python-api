@@ -2235,3 +2235,54 @@ Press CTRL+C to quit
 192.168.10.1 - - [11/Dec/2025 11:20:26] "GET /api/common/vender?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
 192.168.10.1 - - [11/Dec/2025 11:20:26] "GET /api/common/jepum?v_db=97_GM&tab_gbn_cd=01 HTTP/1.1" 200 -
 192.168.10.1 - - [11/Dec/2025 11:20:32] "GET /api/chulha/list?v_db=97_GM&from_dt=20251201&to_dt=20251231 HTTP/1.1" 200 -
+13.125.144.169 - - [11/Dec/2025 11:40:39] "GET /api/select/data/descriptive?v_db=16_UR&from_dt=20251111&to_dt=20251211 HTTP/1.1" 200 -
+54.177.140.98 - - [11/Dec/2025 11:43:38] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [11/Dec/2025 11:43:38] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+50.18.18.46 - - [11/Dec/2025 11:43:39] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+54.177.140.98 - - [11/Dec/2025 11:43:41] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+54.183.247.190 - - [11/Dec/2025 11:44:00] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [11/Dec/2025 11:44:00] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [11/Dec/2025 11:44:00] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.177.140.98 - - [11/Dec/2025 11:44:00] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [11/Dec/2025 11:44:00] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+54.177.140.98 - - [11/Dec/2025 11:44:01] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+50.18.18.46 - - [11/Dec/2025 11:44:01] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+54.177.140.98 - - [11/Dec/2025 11:44:01] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+13.125.233.163 - - [11/Dec/2025 11:48:46] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+13.125.233.163 - - [11/Dec/2025 11:48:46] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+13.125.233.163 - - [11/Dec/2025 11:49:02] "GET /api/select/data/line-defect-rate?v_db=16_UR&from_dt=20251111&to_dt=20251211 HTTP/1.1" 200 -
+3.149.59.26 - - [11/Dec/2025 18:02:06] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [11/Dec/2025 18:03:48] "GET /login HTTP/1.1" 404 -
+3.149.59.26 - - [11/Dec/2025 18:04:07] "GET / HTTP/1.1" 200 -
+3.149.59.26 - - [11/Dec/2025 18:05:27] code 400, message Bad HTTP/0.9 request type ('\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\xc5_\x90\x04\x07\x04\xe9C?@¨­#\x9d\xddy¢´G¢ç\xcf\x01©¬')
+3.149.59.26 - - [11/Dec/2025 18:05:27] "\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\xc5_\x90\x04\x07\x04\xe9C?@¨­#\x9d\xddy¢´G¢ç\xcf\x01©¬\x1d\xaf:" HTTPStatus.BAD_REQUEST -
+3.149.59.26 - - [11/Dec/2025 18:08:04] code 400, message Bad request version ('\xc0\x14\xc0')
+3.149.59.26 - - [11/Dec/2025 18:08:04] "\x16\x03\x01\x00{\x01\x00\x00w\x03\x03\x91\xe8WXW\xd6\xc4iv\xfak©­\x05\xe9¡¤\x13¨­©£{{)$\xdb`\xc9©ª&\x93t\xa0#\x87\x00\x00\x1a\xc0/\xc0+\xc0\x11\xc0\x07\xc0\x13\xc0\x09\xc0\x14\xc0" HTTPStatus.BAD_REQUEST -
+3.137.73.221 - - [11/Dec/2025 18:39:13] "GET / HTTP/1.1" 200 -
+192.168.10.1 - - [11/Dec/2025 22:15:25] "GET /pdown HTTP/1.1" 404 -
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:8999
+ * Running on http://192.168.10.175:8999
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.125.144.169 - - [12/Dec/2025 09:47:51] "GET /api/select/segsan/process?v_db=16_UR&prg_cd=160&from_dt=20251201&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 09:47:54] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251201&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 09:47:54] "GET /api/select/jepum/jepum?v_db=16_UR HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 09:47:54] "GET /api/select/etc/test_man_cd?v_db=16_UR&dept_cd=P0503 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 09:47:59] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251121A-28 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 09:48:36] "POST /api/insert/etc/test-result?v_db=16_UR HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 09:48:36] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251201&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:17:08] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:17:08] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:17:23] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251211&prg_cd=110 HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+ * Detected change in 'D:\\python-api\\main.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
