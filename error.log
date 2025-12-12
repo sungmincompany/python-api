@@ -2286,3 +2286,92 @@ Press CTRL+C to quit
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 128-990-203
+54.183.247.190 - - [12/Dec/2025 10:30:22] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:30:22] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 10:30:23] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:30:23] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+127.0.0.1 - - [12/Dec/2025 10:30:30] "GET /api/data/measurement?v_db=16_UR&from_dt=20251205&to_dt=20251212 HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 10:48:47] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:48:47] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.193.51.177 - - [12/Dec/2025 10:48:48] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:48:48] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:48:52] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:49:41] "GET /api/select/data/descriptive?v_db=16_UR&from_dt=20251112&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:49:44] "GET /api/analysis/xy-options?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:49:46] "GET /api/select/data/jepum-defect-rate?v_db=16_UR&from_dt=20251112&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:49:56] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:50:01] "GET /api/select/data/jepum-defect-rate?v_db=16_UR&from_dt=20251112&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:50:08] "GET /api/select/data/line-defect-rate?v_db=16_UR&from_dt=20251112&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:50:13] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+54.193.51.177 - - [12/Dec/2025 10:54:08] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.193.51.177 - - [12/Dec/2025 10:54:08] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:54:09] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:54:09] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 10:54:17] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:56:55] "POST /api/data/measurement/duplicate?v_db=16_UR HTTP/1.1" 404 -
+13.125.144.169 - - [12/Dec/2025 10:57:18] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:57:29] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 404 -
+54.193.51.177 - - [12/Dec/2025 10:59:14] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 10:59:14] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+54.183.247.190 - - [12/Dec/2025 10:59:14] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+54.193.51.177 - - [12/Dec/2025 10:59:14] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 10:59:18] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:00:00] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:00:14] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 404 -
+13.125.144.169 - - [12/Dec/2025 11:00:30] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 404 -
+13.125.144.169 - - [12/Dec/2025 11:00:33] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 404 -
+54.183.247.190 - - [12/Dec/2025 11:02:01] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 11:02:01] "GET /api/select/data/smart-prg-cd?v_db=16_UR HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 11:02:02] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+52.53.197.70 - - [12/Dec/2025 11:02:02] "GET /api/select/data/equip-down-time?v_db=16_UR&ymd=20251212&prg_cd=110 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:02:06] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:02:12] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:02:23] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:02:28] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:03:12] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 404 -
+13.125.144.169 - - [12/Dec/2025 11:03:23] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:03:46] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:04:08] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:04:22] "DELETE /api/data/measurement/delete?v_db=16_UR&key=2025-12-12%2011:04:06_221 HTTP/1.1" 404 -
+13.125.144.169 - - [12/Dec/2025 11:06:20] "GET /api/select/etc/lot_no_inform?v_db=16_UR&lot_no2=251121A-28 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:06:56] "POST /api/insert/etc/test-result?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:06:56] "GET /api/select/etc/test-result?v_db=16_UR&from_dt=20251201&to_dt=20251212 HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.125.233.163 - - [12/Dec/2025 11:07:17] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:07:29] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:07:31] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:07:44] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:07:46] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:08:10] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:08:41] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:08:50] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:08:51] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:08:57] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:08:58] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:09:02] "POST /api/data/measurement/duplicate?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:09:03] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:09:17] "DELETE /api/data/measurement/delete?v_db=16_UR&key=2025-12-12%2011:09:03.193_25702 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:09:19] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:09:55] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+ * Detected change in 'D:\\python-api\\routes\\data.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 128-990-203
+13.125.144.169 - - [12/Dec/2025 11:11:54] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:11:59] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:00] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:12:04] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:05] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:09] "POST /api/data/measurement/duplicate?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:10] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:20] "POST /api/data/measurement/duplicate?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:21] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:31] "PUT /api/data/measurement/update?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:32] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:12:38] "POST /api/data/measurement/duplicate?v_db=16_UR HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:39] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
+13.125.233.163 - - [12/Dec/2025 11:12:44] "DELETE /api/data/measurement/delete?v_db=16_UR&key=2025-12-12%2011:12:39.150_235 HTTP/1.1" 200 -
+13.125.144.169 - - [12/Dec/2025 11:12:46] "GET /api/data/measurement?v_db=16_UR&from_dt=20251211&to_dt=20251212 HTTP/1.1" 200 -
