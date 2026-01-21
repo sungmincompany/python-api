@@ -11,6 +11,10 @@ def get_jepum_list():
     v_db = request.args.get("v_db")
     # 1. tab_gbn_cd 파라미터를 받습니다 (없으면 None)
     tab_gbn_cd = request.args.get("tab_gbn_cd") 
+    # [수정 1] jepum_flg2 파라미터 받기
+    jepum_flg2 = request.args.get("jepum_flg2")
+    # [추가] 정렬 기준 파라미터 받기 (예: 'nm', 'cd')
+    sort_type = request.args.get("sort_type")
 
     if not v_db:
         return jsonify({"error": "v_db 파라미터가 필요합니다."}), 400
@@ -28,8 +32,17 @@ def get_jepum_list():
             sql += " AND tab_gbn_cd = ?"
             params.append(tab_gbn_cd)
 
-        # 정렬 추가
-        sql += " ORDER BY jepum_nm"
+        # [수정 2] jepum_flg2 조건 추가 (파라미터가 있을 때만 동작)
+        if jepum_flg2:
+            sql += " AND jepum_flg2 = ?"
+            params.append(jepum_flg2)
+
+        # [수정됨] 정렬 조건 단순화 (오름차순 전용)
+        # sort_type이 'cd'면 코드순, 그 외엔 이름순
+        if sort_type == 'cd':
+            sql += " ORDER BY jepum_cd"
+        else:
+            sql += " ORDER BY jepum_nm"
 
         # 쿼리 실행 (params 튜플로 변환)
         cur.execute(sql, tuple(params))

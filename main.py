@@ -29,6 +29,9 @@ from routes.stock import stock_bp
 from routes.chulha import chulha_bp
 from routes.data import data_bp
 
+# [추가] 97gm 전용 라우트 임포트
+from routes.custom_97gm import bp_97gm
+
 # -----------------------------------------------------------
 # [추가] API 경로 -> 한글 프로그램명 매핑
 # -----------------------------------------------------------
@@ -145,6 +148,9 @@ def create_app():
         (stock_bp,  "/api/stock"), 
         (chulha_bp, "/api/chulha"), 
         (data_bp,   "/api/data"),   
+
+        # [추가] 97gm 전용 블루프린트 등록
+        (bp_97gm,   "/api/97gm"),
     ]
 
     # 루프를 통해 리스트에 있는 모든 블루프린트를 자동으로 등록합니다.

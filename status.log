@@ -238,3 +238,12 @@ Error occurred in /dynamic-analysis: ('42000', '[42000] [Microsoft][ODBC Driver 
  * Serving Flask app 'main'
  * Debug mode: on
 7 dev
+ * Serving Flask app 'main'
+ * Debug mode: on
+[Log Error] Failed to insert log: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]PRIMARY KEY 제약 조건 'bmtlogh_x'을(를) 위반했습니다. 개체 'dbo.bmtlogh'에 중복 키를 삽입할 수 없습니다. (2627) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문이 종료되었습니다. (3621)")
+[Log Error] Failed to insert log: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]PRIMARY KEY 제약 조건 'bmtlogh_x'을(를) 위반했습니다. 개체 'dbo.bmtlogh'에 중복 키를 삽입할 수 없습니다. (2627) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문이 종료되었습니다. (3621)")
+[Log Error] Failed to insert log: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]PRIMARY KEY 제약 조건 'bmtlogh_x'을(를) 위반했습니다. 개체 'dbo.bmtlogh'에 중복 키를 삽입할 수 없습니다. (2627) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문이 종료되었습니다. (3621)")
+[Log Error] Programming Error: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'used_cnt3'이(가) 잘못되었습니다. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문을 준비할 수 없습니다. (8180)")
+[Log Error] Programming Error: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'used_cnt3'이(가) 잘못되었습니다. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문을 준비할 수 없습니다. (8180)")
+[Log Error] Programming Error: ('42S22', "[42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]열 이름 'used_cnt3'이(가) 잘못되었습니다. (207) (SQLExecDirectW); [42S22] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문을 준비할 수 없습니다. (8180)")
+[Log Error] Failed to insert log: ('23000', "[23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]PRIMARY KEY 제약 조건 'bmtlogh_x'을(를) 위반했습니다. 개체 'dbo.bmtlogh'에 중복 키를 삽입할 수 없습니다. (2627) (SQLExecDirectW); [23000] [Microsoft][ODBC Driver 17 for SQL Server][SQL Server]문이 종료되었습니다. (3621)")
