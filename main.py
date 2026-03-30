@@ -71,6 +71,9 @@ API_NAME_MAP = {
 
     # [데이터/설비]
     "/api/data/measurement": "측정 데이터 조회",
+    "/api/data/smart-log": "스마트로그 전압/전류 조회 (두영기전)",
+    "/api/data/smart-log/grade": "스마트로그 분석등급(A/B/C) 지정",
+    "/api/data/analysis-history": "분석 결과 보고서 이력 조회/저장",
     "/api/select/smart/smart-log": "설비 데이터 수집 로그",
     "/api/select/data/smart-prg-cd": "Smart 공정 목록",
     "/api/select/data/equip-down-time": "기기별 비가동 시간",

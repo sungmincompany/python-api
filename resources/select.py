@@ -659,8 +659,9 @@ def check_lot_for_tapping():
         cur = conn.cursor()
 
         # 1) 170 공정 여부 체크
+        # 📌 [수정] SELECT 절에 'amt' 를 추가했습니다.
         sql_170 = """
-            SELECT jepum_cd, bigo_1
+            SELECT jepum_cd, bigo_1, amt
             FROM lot_hst
             WHERE lot_no = ?
               AND prg_cd = '170'
@@ -673,6 +674,7 @@ def check_lot_for_tapping():
 
         jepum_cd_170 = row_170[0]
         bin_no_170   = row_170[1]
+        amt_170      = row_170[2] # 📌 [추가] 조회된 수량 변수에 담기
 
         # 2) 이미 Taping(180) 등록 여부
         sql_180 = """
@@ -689,10 +691,12 @@ def check_lot_for_tapping():
             return jsonify({"error": "이미 Tapping(180)에 등록된 LOT NO"}), 400
 
         conn.close()
+        # 📌 [수정] JSON 응답에 'amt' 도 함께 넘겨줍니다.
         return jsonify({
             "message": "OK",
             "jepum_cd": jepum_cd_170,
-            "bin_no": bin_no_170
+            "bin_no": bin_no_170,
+            "amt": amt_170 
         }), 200
 
     except Exception as e:
