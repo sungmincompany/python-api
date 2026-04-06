@@ -222,39 +222,25 @@ def get_smart_log_data():
     from_dt = request.args.get("from_dt") 
     to_dt   = request.args.get("to_dt")   
     auto_id = request.args.get("auto_id") 
-    only_valid = request.args.get("only_valid", "true") # ⭐️ 0값 제외 여부 파라미터 추가
+    only_valid = request.args.get("only_valid", "true")
 
-    if not v_db: 
-        return jsonify({"error": "v_db missing"}), 400
+    if not v_db: return jsonify({"error": "v_db missing"}), 400
 
     try:
         conn = get_db_connection(v_db)
-        if conn is None:
-            return jsonify({"error": "DB 연결 실패"}), 500
-            
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
         cur = conn.cursor()
 
-        if auto_id:
-            auto_id_cond = f"AND auto_id = '{auto_id}'" if auto_id in ['201', '203'] else ""
-        else:
-            auto_id_cond = "AND auto_id IN ('201', '203')"
+        auto_id_cond = f"AND auto_id = '{auto_id}'" if auto_id in ['201', '203'] else "AND auto_id IN ('201', '203')"
+        valid_cond = "AND (ISNULL(col_3, 0) > 0 OR ISNULL(col_4, 0) > 0)" if only_valid.lower() == "true" else ""
 
-        # ⭐️ 유효 데이터(0이 아닌 값) 조건 추가
-        valid_cond = ""
-        if only_valid.lower() == "true":
-            valid_cond = "AND (ISNULL(col_3, 0) > 0 OR ISNULL(col_4, 0) > 0)"
-
-        # 파이썬 f-string으로 동적 쿼리 생성
         sql = f"""
             SELECT ymd, hh, mm, auto_id, gbn, bigo, bigo2, col_3, col_4, cr_dt
             FROM dbo.smart_log
-            WHERE cr_dt >= CONVERT(DATETIME, ?, 120) 
-              AND cr_dt <= CONVERT(DATETIME, ?, 120)
-              {auto_id_cond}
-              {valid_cond}
+            WHERE cr_dt >= CONVERT(DATETIME, ?, 120) AND cr_dt <= CONVERT(DATETIME, ?, 120)
+              {auto_id_cond} {valid_cond}
             ORDER BY cr_dt DESC, auto_id ASC
         """
-        
         cur.execute(sql, (from_dt, to_dt))
         rows = cur.fetchall()
         conn.close()
@@ -262,22 +248,14 @@ def get_smart_log_data():
         data = []
         for row in rows:
             data.append({
-                "ymd": row[0],
-                "hh": row[1],
-                "mm": row[2],
-                "auto_id": row[3],
-                "gbn": row[4],
-                "bigo": row[5],
-                # bigo2는 더 이상 사용하지 않지만 호환성을 위해 유지
-                "col_1": float(row[7]) if row[7] is not None else 0,
+                "ymd": row[0], "hh": row[1], "mm": row[2], "auto_id": row[3], "gbn": row[4], "bigo": row[5],
+                # ⭐️ [핵심] DB에는 104로 들어있으므로 프론트엔드로 보낼 땐 10.0으로 나누어 10.4V로 전달!
+                "col_1": (float(row[7]) / 10.0) if row[7] is not None else 0,
                 "col_2": float(row[8]) if row[8] is not None else 0,
                 "cr_dt": row[9].strftime('%Y-%m-%d %H:%M:%S') if row[9] else f"{row[0]} {row[1]}:{row[2]}"
             })
-            
         return jsonify(data), 200
-        
     except Exception as e:
-        print(f"Error in get_smart_log_data: {str(e)}")
         return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
    
 # ==============================================================
@@ -379,25 +357,19 @@ def get_welding_realtime():
         if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
         cur = conn.cursor()
 
-        # 1. 실시간 데이터 (smart_last)
-        sql_last = """
-            SELECT auto_id, col_3, col_4, cr_dt
-            FROM dbo.smart_last
-            WHERE auto_id IN ('201', '203')
-        """
+        sql_last = "SELECT auto_id, col_3, col_4, cr_dt FROM dbo.smart_last WHERE auto_id IN ('201', '203')"
         cur.execute(sql_last)
         last_rows = cur.fetchall()
 
-        # 2. 동적 임계치 기준 (smart_log) - ⭐️ bigo2='A' 대신 정상 스펙 범위 내의 최근 5건 평균으로 변경!
+        # ⭐️ [핵심] 고정값이 아니라, 전류가 전압의 0.7~1.3배 사이인 정상 '비율'을 가진 최근 5건의 평균 계산!
         sql_baseline = """
-            SELECT auto_id, AVG(col_3) as avg_v, AVG(col_4) as avg_a
+            SELECT auto_id, AVG(col_3)/10.0 as avg_v, AVG(col_4) as avg_a
             FROM (
                 SELECT auto_id, col_3, col_4,
                        ROW_NUMBER() OVER(PARTITION BY auto_id ORDER BY cr_dt DESC) as rn
                 FROM dbo.smart_log
                 WHERE auto_id IN ('201', '203') 
-                  AND col_3 BETWEEN 18 AND 22   -- 정상 전압 바운더리
-                  AND col_4 BETWEEN 200 AND 240 -- 정상 전류 바운더리
+                  AND col_4 BETWEEN (col_3 * 0.7) AND (col_3 * 1.3)
             ) t
             WHERE rn <= 5
             GROUP BY auto_id
@@ -406,17 +378,16 @@ def get_welding_realtime():
         baseline_rows = cur.fetchall()
         conn.close()
 
-        # 결과 데이터 기본 구조 셋팅 (grade 항목은 제거)
         result = {
-            "201": {"realtime": {"v":0, "a":0, "time":""}, "target": {"v": 20.0, "a": 220.0}},
-            "203": {"realtime": {"v":0, "a":0, "time":""}, "target": {"v": 20.0, "a": 220.0}}
+            "201": {"realtime": {"v":0, "a":0, "time":""}, "target": {"v": 15.0, "a": 150.0}},
+            "203": {"realtime": {"v":0, "a":0, "time":""}, "target": {"v": 15.0, "a": 150.0}}
         }
 
         for r in last_rows:
             aid = str(r[0])
             if aid in result:
                 result[aid]["realtime"] = {
-                    "v": float(r[1]) if r[1] else 0.0,
+                    "v": (float(r[1]) / 10.0) if r[1] else 0.0, # 실시간 전압도 / 10 처리
                     "a": float(r[2]) if r[2] else 0.0,
                     "time": r[3].strftime('%H:%M:%S') if r[3] else ""
                 }
@@ -426,9 +397,7 @@ def get_welding_realtime():
                 result[aid]["target"] = {"v": round(float(r[1]), 1), "a": round(float(r[2]), 1)}
 
         return jsonify(result), 200
-        
     except Exception as e:
-        print(f"Error in get_welding_realtime: {str(e)}")
         return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
 
 # ==============================================================
@@ -638,7 +607,7 @@ def get_quality_dashboard():
         for r in sensor_rows:
             sensor_data.append({
                 "time": r[0].strftime('%Y-%m-%d %H:%M:%S') if r[0] else "",
-                "v": float(r[1]) if r[1] else 0,
+                "v": (float(r[1]) / 10.0) if r[1] else 0,  # ⭐️ 핵심: / 10.0 추가
                 "a": float(r[2]) if r[2] else 0,
                 "is_defect_day": True if r[3] > 0 else False
             })
