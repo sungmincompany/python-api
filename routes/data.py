@@ -1,5 +1,6 @@
 from flask import Blueprint, request, jsonify
 from db import get_db_connection
+from datetime import datetime
 import json
 
 # Blueprint 정의
@@ -620,3 +621,303 @@ def get_quality_dashboard():
     except Exception as e:
         print(f"Error in get_quality_dashboard: {str(e)}")
         return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# [GET] 혼합 및 추출공정 실시간 모니터링 데이터 조회 (205번 설비)
+# ==============================================================
+@data_bp.route('/mixing-realtime', methods=['GET'])
+def get_mixing_realtime():
+    v_db = request.args.get("v_db", "31_ST_2025")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        
+        cur = conn.cursor()
+
+        # 1. 실시간 최신 데이터 조회 (smart_last 사용 - 속도 및 최신화 보장)
+        sql_realtime = """
+            SELECT col_1, col_2, col_3, col_4, col_5, col_6, col_7, col_8, cr_dt
+            FROM dbo.smart_last
+            WHERE auto_id = '205'
+        """
+        cur.execute(sql_realtime)
+        row = cur.fetchone()
+
+        # 2. 금일 기준 누적 가동시간 계산 (smart_log 사용)
+        # col_4, col_5(추출)는 80도 이상(800), col_7(농축)은 40도 이상(400)일 때 1분 추가
+        sql_runtime = """
+            SELECT 
+                SUM(CASE WHEN col_4 >= 800 THEN 1 ELSE 0 END) as run_time_1st,
+                SUM(CASE WHEN col_5 >= 800 THEN 1 ELSE 0 END) as run_time_2nd,
+                SUM(CASE WHEN col_7 >= 400 THEN 1 ELSE 0 END) as run_time_con
+            FROM dbo.smart_log
+            WHERE auto_id = '205'
+              AND ymd = CONVERT(VARCHAR(8), GETDATE(), 112)
+        """
+        cur.execute(sql_runtime)
+        runtime_row = cur.fetchone()
+        conn.close()
+
+        run_time_1st = int(runtime_row[0]) if runtime_row and runtime_row[0] else 0
+        run_time_2nd = int(runtime_row[1]) if runtime_row and runtime_row[1] else 0
+        run_time_con = int(runtime_row[2]) if runtime_row and runtime_row[2] else 0
+
+        if not row:
+            return jsonify({"error": "데이터가 없습니다."}), 404
+
+        # 데이터 변환 및 스케일링 (/10, /100)
+        a_cnt = int(row[0]) if row[0] is not None else 0
+        b_cnt = int(row[1]) if row[1] is not None else 0
+        weight = int(row[2]) if row[2] is not None else 0
+        
+        temp_1st = float(row[3]) / 10.0 if row[3] is not None else 0.0
+        temp_2nd = float(row[4]) / 10.0 if row[4] is not None else 0.0
+        ext_brix = float(row[5]) / 100.0 if row[5] is not None else 0.0
+        
+        con_temp = float(row[6]) / 10.0 if row[6] is not None else 0.0
+        con_brix = float(row[7]) / 100.0 if row[7] is not None else 0.0
+        
+        cr_dt = row[8]
+        time_str = cr_dt.strftime('%H:%M:%S') if cr_dt else ""
+
+        # 가동 판정
+        is_running_1st = temp_1st >= 80.0
+        is_running_2nd = temp_2nd >= 80.0
+        is_running_con = con_temp >= 40.0
+
+        return jsonify({
+            "time": time_str,
+            "ext_1st": {"temp": temp_1st, "brix": ext_brix, "is_running": is_running_1st, "run_time_min": run_time_1st},
+            "ext_2nd": {"temp": temp_2nd, "brix": ext_brix, "is_running": is_running_2nd, "run_time_min": run_time_2nd},
+            "con":     {"temp": con_temp, "brix": con_brix, "is_running": is_running_con, "run_time_min": run_time_con},
+            "material": {"a_cnt": a_cnt, "b_cnt": b_cnt, "total_weight": weight}
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_mixing_realtime: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# [GET] 숙성공정 실시간 가동 모니터링 데이터 조회 (206번 설비 전용)
+# ==============================================================
+@data_bp.route('/aging-realtime', methods=['GET'])
+def get_aging_realtime():
+    v_db = request.args.get("v_db", "31_ST_2025")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        
+        cur = conn.cursor()
+
+        # 1. 숙성공정(206) 실시간 가동 여부 조회 (smart_last 우선)
+        cur.execute("SELECT col_1, col_2, col_3, cr_dt FROM dbo.smart_last WHERE auto_id = '206'")
+        row_last = cur.fetchone()
+        
+        # smart_last에 데이터가 없는 경우 smart_log에서 최신 1건 조회 (Fallback)
+        if not row_last:
+            cur.execute("SELECT TOP 1 col_1, col_2, col_3, cr_dt FROM dbo.smart_log WHERE auto_id = '206' ORDER BY cr_dt DESC")
+            row_last = cur.fetchone()
+
+        # 가동 상태 (1: True, 0: False)
+        t1_run = bool(row_last[0]) if row_last and row_last[0] else False
+        t2_run = bool(row_last[1]) if row_last and row_last[1] else False
+        t3_run = bool(row_last[2]) if row_last and row_last[2] else False
+        time_str = row_last[3].strftime('%H:%M:%S') if row_last and row_last[3] else ""
+
+        # 2. 금일 누적 가동 시간(분) 계산 (1분당 1개 로그 기준)
+        # col_1, col_2, col_3의 합계를 구하면 오늘 가동된 총 시간이 나옵니다.
+        sql_runtime = """
+            SELECT 
+                SUM(ISNULL(col_1, 0)) as run_time_t1,
+                SUM(ISNULL(col_2, 0)) as run_time_t2,
+                SUM(ISNULL(col_3, 0)) as run_time_t3
+            FROM dbo.smart_log
+            WHERE auto_id = '206'
+              AND ymd = CONVERT(VARCHAR(8), GETDATE(), 112)
+        """
+        cur.execute(sql_runtime)
+        run_row = cur.fetchone()
+        conn.close()
+
+        t1_time = int(run_row[0]) if run_row and run_row[0] else 0
+        t2_time = int(run_row[1]) if run_row and run_row[1] else 0
+        t3_time = int(run_row[2]) if run_row and run_row[2] else 0
+
+        return jsonify({
+            "time": time_str,
+            "tanks": {
+                "tank1": { "isRunning": t1_run, "runTimeMin": t1_time },
+                "tank2": { "isRunning": t2_run, "runTimeMin": t2_time },
+                "tank3": { "isRunning": t3_run, "runTimeMin": t3_time }
+            }
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_aging_realtime: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# [GET] 혼합/추출공정(205) 과거 로그 조회 (프론트엔드 알람 판정용)
+# ==============================================================
+@data_bp.route('/mixing-history', methods=['GET'])
+def get_mixing_history():
+    v_db = request.args.get("v_db", "31_ST_2025")
+    from_dt = request.args.get("from_dt") # 포맷: YYYY-MM-DD
+    to_dt = request.args.get("to_dt")     # 포맷: YYYY-MM-DD
+
+    if not from_dt or not to_dt:
+        return jsonify({"error": "날짜 파라미터가 필요합니다."}), 400
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        # 알람의 흐름을 파악하기 위해 시간 오름차순(ASC)으로 가져옵니다.
+        sql = """
+            SELECT cr_dt, col_4, col_5, col_7
+            FROM dbo.smart_log
+            WHERE auto_id = '205'
+              AND cr_dt >= CONVERT(DATETIME, ?, 120)
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+            ORDER BY cr_dt ASC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for r in rows:
+            data.append({
+                "time": r[0].strftime('%Y-%m-%d %H:%M:%S') if r[0] else "",
+                "temp1": float(r[1]) / 10.0 if r[1] is not None else 0,
+                "temp2": float(r[2]) / 10.0 if r[2] is not None else 0,
+                "tempCon": float(r[3]) / 10.0 if r[3] is not None else 0,
+            })
+
+        return jsonify(data), 200
+
+    except Exception as e:
+        print(f"Error in get_mixing_history: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# 14. [GET] 공정별 통합 데이터 정보 조회 (DataInfoInquiry 용)
+# ==============================================================
+@data_bp.route('/data-info-inquiry', methods=['GET'])
+def get_data_info_inquiry():
+    v_db = request.args.get("v_db", "31_ST_2025")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+    process_type = request.args.get("process", "all")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        sql = """
+            SELECT 
+                cr_dt, auto_id, 
+                col_4, col_5, col_6, -- 추출 1차온도, 2차온도, 당도
+                col_7, col_8,        -- 농축 온도, 당도
+                col_1, col_2, col_3  -- 숙성 탱크 가동상태
+            FROM dbo.smart_log
+            WHERE cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+            ORDER BY cr_dt DESC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for i, r in enumerate(rows):
+            cr_dt = r[0].strftime('%Y-%m-%d %H:%M:%S') if r[0] else ""
+            auto_id = str(r[1])
+            
+            # 205 (추출/농축 공정)
+            if auto_id == '205':
+                temp1 = float(r[2])/10.0 if r[2] else 0
+                temp2 = float(r[3])/10.0 if r[3] else 0
+                extBrix = float(r[4])/100.0 if r[4] else 0
+                conTemp = float(r[5])/10.0 if r[5] else 0
+                conBrix = float(r[6])/100.0 if r[6] else 0
+                
+                if process_type in ['all', 'ext'] and (temp1 > 40 or temp2 > 40):
+                    data.append({
+                        "key": f"ext_{i}", "date": cr_dt, 
+                        "process": "추출공정", "equipment": "추출기 (205)", 
+                        "collectedData": f"1차온도: {temp1}°C | 2차온도: {temp2}°C | 추출당도: {extBrix} Brix"
+                    })
+                if process_type in ['all', 'con'] and conTemp > 30:
+                    data.append({
+                        "key": f"con_{i}", "date": cr_dt, 
+                        "process": "농축공정", "equipment": "농축기 (205)", 
+                        "collectedData": f"농축온도: {conTemp}°C | 농축당도: {conBrix} Brix"
+                    })
+            
+            # 206 (숙성 공정)
+            elif auto_id == '206' and process_type in ['all', 'age']:
+                if r[7] or r[8] or r[9]: # 가동 중인 탱크가 하나라도 있으면
+                    active_tanks = []
+                    if r[7]: active_tanks.append("1호기")
+                    if r[8]: active_tanks.append("2호기")
+                    if r[9]: active_tanks.append("3호기")
+                    data.append({
+                        "key": f"age_{i}", "date": cr_dt, 
+                        "process": "숙성공정", "equipment": "숙성탱크 (206)", 
+                        "collectedData": f"가동 탱크: {', '.join(active_tanks)}"
+                    })
+
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# ==============================================================
+# 15. [GET] 통계/분석용 Raw 데이터 조회 (Regression, SPC 용)
+# ==============================================================
+@data_bp.route('/analytics-raw', methods=['GET'])
+def get_analytics_raw():
+    v_db = request.args.get("v_db", "31_ST_2025")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 실패"}), 500
+        cur = conn.cursor()
+        
+        # 1차추출온도(4), 2차추출온도(5), 추출당도(6), 농축온도(7), 농축당도(8)
+        sql = """
+            SELECT col_4, col_5, col_6, col_7, col_8, cr_dt
+            FROM dbo.smart_log
+            WHERE auto_id = '205'
+              AND cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+              AND col_7 > 200 -- 20도 이상인 유의미한 가동 데이터만 필터링
+            ORDER BY cr_dt ASC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for r in rows:
+            data.append({
+                "temp1": float(r[0])/10.0 if r[0] else 0,     # 1차 추출 온도
+                "temp2": float(r[1])/10.0 if r[1] else 0,     # 2차 추출 온도
+                "extBrix": float(r[2])/100.0 if r[2] else 0,  # 추출 당도
+                "conTemp": float(r[3])/10.0 if r[3] else 0,   # 농축 온도
+                "conBrix": float(r[4])/100.0 if r[4] else 0,  # 농축 당도
+                "time": r[5].strftime('%Y-%m-%d %H:%M') if r[5] else ""
+            })
+        return jsonify(data), 200
+        
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
