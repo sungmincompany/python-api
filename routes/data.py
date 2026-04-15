@@ -921,3 +921,55 @@ def get_analytics_raw():
         
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# ==============================================================
+# 16. [GET] 수주(출하) 일정표 데이터 조회 (suju_mst + jepum_code)
+# ==============================================================
+@data_bp.route('/suju-schedule', methods=['GET'])
+def get_suju_schedule():
+    v_db = request.args.get("v_db", "31_ST_2025") 
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        # ⭐️ [수정] jepum_code 테이블을 LEFT JOIN하여 jepum_nm(제품명)을 가져옵니다.
+        sql = """
+            SELECT 
+                s.suju_cd, 
+                s.suju_seq, 
+                s.jepum_cd, 
+                j.jepum_nm,
+                s.out_dt_to, 
+                s.amt, 
+                s.process_cd
+            FROM dbo.suju_mst s
+            LEFT JOIN dbo.jepum_code j ON s.jepum_cd = j.jepum_cd
+            WHERE s.process_cd IN ('01', '20')
+              AND s.out_dt_to IS NOT NULL 
+              AND s.out_dt_to != ''
+            ORDER BY s.out_dt_to ASC, s.suju_cd ASC
+        """
+        cur.execute(sql)
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for row in rows:
+            data.append({
+                "suju_cd": row[0] if row[0] else "",
+                "suju_seq": row[1] if row[1] else "",
+                "jepum_cd": row[2] if row[2] else "",
+                "jepum_nm": row[3] if row[3] else "이름 없음", # ⭐️ 제품명 추가
+                "out_dt": row[4] if row[4] else "",  
+                "amt": float(row[5]) if row[5] else 0, 
+                "process_cd": row[6] if row[6] else "" 
+            })
+
+        return jsonify(data), 200
+        
+    except Exception as e:
+        print(f"Error in get_suju_schedule: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500

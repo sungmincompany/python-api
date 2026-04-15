@@ -196,6 +196,10 @@ def update_tapping():
     man_cd       = data.get("man_cd")        # 작업자 (한글 인코딩 주의)
     bin_no       = data.get("bin_no")        # BIN NO
     jepum_cd     = data.get("jepum_cd", "")  # 제품코드(필요하다면)
+    # --- 추가되는 부분 ---
+    bigo_3       = data.get("bigo_3", "") # 작업 NO
+    bigo_4       = data.get("bigo_4", "") # 장비명
+    # -------------------
 
     if not lot_no:
         return jsonify({"error": "lot_no 누락"}), 400
@@ -251,17 +255,18 @@ def update_tapping():
             else:
                 bigo_a1 = 0
 
+            # INSERT 쿼리에 bigo_3, bigo_4 추가
             sql_ins = """
                 INSERT INTO lot_hst
                 (lot_no, prg_cd, lot_seq, amt, man_cd, jepum_cd,
-                 work_dt, bigo_1, bigo_a1)
+                 work_dt, bigo_1, bigo_a1, bigo_3, bigo_4)
                 VALUES
                 (?, '180', ?, ?, ?, ?,
-                 CONVERT(varchar, GETDATE(), 112), ?, ?)
+                 CONVERT(varchar, GETDATE(), 112), ?, ?, ?, ?)
             """
             cur.execute(sql_ins, (
                 lot_no, i, use_qty, man_cd_encoded, jepum_cd,
-                bin_no, bigo_a1
+                bin_no, bigo_a1, bigo_3, bigo_4
             ))
 
             leftover -= use_qty

@@ -607,7 +607,9 @@ def select_tapping_result():
                 MAX(h.amt) AS amt,
                 MAX(h.man_cd) AS man_cd,
                 MAX(h.bigo_1) AS bin_no,               
-                MAX(h.bigo_a1) AS leftover
+                MAX(h.bigo_a1) AS leftover,
+                MAX(h.bigo_3) AS bigo_3,  -- 추가: 작업 NO
+                MAX(h.bigo_4) AS bigo_4   -- 추가: 장비명
             FROM lot_hst h
             LEFT JOIN jepum_code c ON h.jepum_cd = c.jepum_cd
             WHERE h.prg_cd = '180'
@@ -629,15 +631,17 @@ def select_tapping_result():
         data = []
         for row in rows:
             data.append({
-                "work_dt":   row[0],  # YYYYMMDD
+                "work_dt":   row[0],  
                 "lot_no":    row[1],
                 "lot_seq":   row[2],
                 "jepum_cd":  row[3],
                 "jepum_nm":  row[4],
                 "amt":       row[5],
                 "man_cd":    row[6],
-                "bigo_1":    row[7],  # BIN No
-                "bigo_a1":   row[8],  # leftover 등
+                "bigo_1":    row[7],  
+                "bigo_a1":   row[8],  
+                "bigo_3":    row[9],  # 추가: 작업 NO
+                "bigo_4":    row[10], # 추가: 장비명
             })
         return json.dumps(data, cls=DecimalEncoder, ensure_ascii=False), 200
     except Exception as e:

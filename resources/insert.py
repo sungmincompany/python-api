@@ -255,6 +255,11 @@ def insert_tapping():
     man_cd       = data.get("man_cd").encode('euc-kr')
     bin_no       = data.get("bin_no", "")
     jepum_cd     = data.get("jepum_cd", "")
+    
+    # --- 추가되는 부분 ---
+    bigo_3       = data.get("bigo_3", "") # 작업 NO
+    bigo_4       = data.get("bigo_4", "") # 장비명
+    # -------------------
 
     if not all([lot_no, amt, reel_count, reel_min_amt, man_cd]):
         return jsonify({"error": "필수 필드 누락"}), 400
@@ -299,16 +304,17 @@ def insert_tapping():
             else:
                 bigo_a1 = 0
 
+            # 쿼리문에 bigo_3, bigo_4를 추가합니다.
             sql_ins = """
                 INSERT INTO lot_hst
                 (lot_no, prg_cd, lot_seq, amt, man_cd, jepum_cd,
-                 work_dt, bigo_1, bigo_a1)
+                 work_dt, bigo_1, bigo_a1, bigo_3, bigo_4)
                 VALUES
                 (?, '180', ?, ?, ?, ?,
-                 CONVERT(varchar, GETDATE(), 112), ?, ?)
+                 CONVERT(varchar, GETDATE(), 112), ?, ?, ?, ?)
             """
             cur.execute(sql_ins, (
-                lot_no, i, use_qty, man_cd, jepum_cd, bin_no, bigo_a1
+                lot_no, i, use_qty, man_cd, jepum_cd, bin_no, bigo_a1, bigo_3, bigo_4
             ))
 
             leftover -= use_qty
