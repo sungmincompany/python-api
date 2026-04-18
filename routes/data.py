@@ -973,3 +973,412 @@ def get_suju_schedule():
     except Exception as e:
         print(f"Error in get_suju_schedule: {str(e)}")
         return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# 17. [GET] 계획(mst) vs 지시(plan) vs 실적(mst) 통합 모니터링
+# ==============================================================
+@data_bp.route('/production-monitoring', methods=['GET'])
+def get_production_monitoring():
+    v_db = request.args.get("v_db", "34_GN")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        
+        cur = conn.cursor()
+
+        # ⭐️ 사용자 피드백 반영: 
+        # Plan(계획) = segsan_req_mst 
+        # Req(지시) = segsan_req_plan
+        # Act(실적) = segsan_mst
+        sql = """
+            WITH PlanData AS (
+                -- 1. 계획(Plan): segsan_req_mst
+                SELECT 
+                    segsan_req_dt AS target_dt, 
+                    jepum_cd, 
+                    SUM(ISNULL(amt, 0)) AS plan_amt
+                FROM dbo.segsan_req_mst
+                WHERE segsan_req_dt >= CONVERT(VARCHAR(8), GETDATE() - 7, 112)
+                GROUP BY segsan_req_dt, jepum_cd
+            ),
+            ReqData AS (
+                -- 2. 지시(Instruction): segsan_req_plan + segsan_req_mst (품목코드 획득용)
+                SELECT 
+                    p.segsan_plan_dt AS target_dt, 
+                    r.jepum_cd, 
+                    SUM(ISNULL(p.amt, 0)) AS req_amt
+                FROM dbo.segsan_req_plan p
+                JOIN dbo.segsan_req_mst r ON p.segsan_req_cd = r.segsan_req_cd
+                WHERE p.segsan_plan_dt >= CONVERT(VARCHAR(8), GETDATE() - 7, 112)
+                GROUP BY p.segsan_plan_dt, r.jepum_cd
+            ),
+            ActData AS (
+                -- 3. 실적(Actual): segsan_mst
+                SELECT 
+                    segsan_dt AS target_dt, 
+                    jepum_cd, 
+                    SUM(ISNULL(amt, 0)) AS actual_amt
+                FROM dbo.segsan_mst
+                WHERE segsan_dt >= CONVERT(VARCHAR(8), GETDATE() - 7, 112)
+                GROUP BY segsan_dt, jepum_cd
+            ),
+            -- 4. Plan과 Req 먼저 조인
+            PlanReq AS (
+                SELECT 
+                    ISNULL(P.target_dt, R.target_dt) AS target_dt,
+                    ISNULL(P.jepum_cd, R.jepum_cd) AS jepum_cd,
+                    ISNULL(P.plan_amt, 0) AS plan_amt,
+                    ISNULL(R.req_amt, 0) AS req_amt
+                FROM PlanData P
+                FULL OUTER JOIN ReqData R ON P.target_dt = R.target_dt AND P.jepum_cd = R.jepum_cd
+            )
+            -- 5. 마지막으로 실적(Act)까지 모두 조인 및 품목명 맵핑
+            SELECT 
+                ISNULL(PR.target_dt, A.target_dt) AS final_dt,
+                ISNULL(PR.jepum_cd, A.jepum_cd) AS final_jepum_cd,
+                ISNULL(j.jepum_nm, ISNULL(PR.jepum_cd, A.jepum_cd)) AS jepum_nm,
+                ISNULL(PR.plan_amt, 0) AS plan_amt,
+                ISNULL(PR.req_amt, 0) AS req_amt,
+                ISNULL(A.actual_amt, 0) AS actual_amt
+            FROM PlanReq PR
+            FULL OUTER JOIN ActData A ON PR.target_dt = A.target_dt AND PR.jepum_cd = A.jepum_cd
+            LEFT JOIN dbo.jepum_code j ON ISNULL(PR.jepum_cd, A.jepum_cd) = j.jepum_cd
+            ORDER BY final_dt DESC, final_jepum_cd ASC
+        """
+        
+        cur.execute(sql)
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for row in rows:
+            plan_amt = float(row[3])   # 생산 계획 수량 (mst)
+            req_amt = float(row[4])    # 작업 지시 수량 (plan)
+            actual_amt = float(row[5]) # 실제 생산 수량 (mst)
+            
+            # 상태값 판정 (실제 현장에서는 '지시' 대비 '실적'으로 달성률을 평가합니다)
+            if req_amt == 0 and actual_amt > 0:
+                status = "무지시 생산" # 지시가 없는데 만들어진 경우
+            elif req_amt > 0 and actual_amt >= req_amt:
+                status = "지시 완료"
+            else:
+                status = "생산 중"
+
+            data.append({
+                "targetDt": row[0] if row[0] else "",
+                "jepumCd": row[1] if row[1] else "",
+                "jepumNm": row[2] if row[2] else "이름 없음",
+                "planAmt": plan_amt,
+                "reqAmt": req_amt,
+                "actualAmt": actual_amt,
+                "status": status
+            })
+
+        return jsonify(data), 200
+
+    except Exception as e:
+        print(f"Error in get_production_monitoring: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+
+# ==============================================================
+# [GET] 증숙로 온도/시간 실시간 모니터링
+# ==============================================================
+@data_bp.route('/steaming-realtime', methods=['GET'])
+def get_steaming_realtime():
+    v_db = request.args.get("v_db", "34_GN")
+    auto_id = request.args.get("auto_id", "203") 
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None:
+            return jsonify({"error": "DB 연결 실패"}), 500
+
+        cur = conn.cursor()
+
+        # 1. 실시간 최신 데이터 조회 (smart_last)
+        sql_realtime = """
+            SELECT col_1, col_2, cr_dt
+            FROM dbo.smart_last
+            WHERE auto_id = ?
+        """
+        cur.execute(sql_realtime, (auto_id,))
+        row = cur.fetchone()
+
+        # 2. 금일 누적 가동 시간 계산 (smart_log)
+        # col_1, col_2는 10배수 저장되어 있으므로 40도 = 400 이상일 때 가동으로 판정(1분 추가)
+        sql_runtime = """
+            SELECT
+                SUM(CASE WHEN ISNULL(col_1, 0) >= 400 THEN 1 ELSE 0 END) as run_time_t1,
+                SUM(CASE WHEN ISNULL(col_2, 0) >= 400 THEN 1 ELSE 0 END) as run_time_t2
+            FROM dbo.smart_log
+            WHERE auto_id = ?
+              AND ymd = CONVERT(VARCHAR(8), GETDATE(), 112)
+        """
+        cur.execute(sql_runtime, (auto_id,))
+        runtime_row = cur.fetchone()
+        conn.close()
+
+        if not row:
+            return jsonify({"error": "데이터가 없습니다."}), 404
+
+        run_time_t1 = int(runtime_row[0]) if runtime_row and runtime_row[0] else 0
+        run_time_t2 = int(runtime_row[1]) if runtime_row and runtime_row[1] else 0
+
+        # 데이터 변환 (스케일 1/10 적용)
+        temp_t1 = float(row[0]) / 10.0 if row[0] is not None else 0.0
+        temp_t2 = float(row[1]) / 10.0 if row[1] is not None else 0.0
+        
+        cr_dt = row[2]
+        time_str = cr_dt.strftime('%H:%M:%S') if cr_dt else ""
+
+        # 가동 판정 (40도 이상)
+        is_running_t1 = temp_t1 >= 40.0
+        is_running_t2 = temp_t2 >= 40.0
+
+        return jsonify({
+            "time": time_str,
+            "tank1": {"temp": temp_t1, "is_running": is_running_t1, "run_time_min": run_time_t1},
+            "tank2": {"temp": temp_t2, "is_running": is_running_t2, "run_time_min": run_time_t2}
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_steaming_realtime: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# [GET] 포장(생산) 실적 대시보드 모니터링
+# ==============================================================
+@data_bp.route('/packaging-performance', methods=['GET'])
+def get_packaging_performance():
+    v_db = request.args.get("v_db", "34_GN")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        
+        cur = conn.cursor()
+
+        # 1. 최근 7일간 일자별 포장 실적 추이 (Line/Bar Chart 용)
+        sql_trend = """
+            SELECT segsan_dt, SUM(ISNULL(amt, 0)) as total_amt
+            FROM dbo.segsan_mst
+            WHERE segsan_dt >= CONVERT(VARCHAR(8), GETDATE() - 6, 112)
+            GROUP BY segsan_dt
+            ORDER BY segsan_dt ASC
+        """
+        cur.execute(sql_trend)
+        trend_rows = cur.fetchall()
+
+        # 2. 최근 7일간 품목별 포장 점유율 (Pie Chart 용)
+        sql_pie = """
+            SELECT ISNULL(j.jepum_nm, m.jepum_cd) as jepum_nm, SUM(ISNULL(m.amt, 0)) as total_amt
+            FROM dbo.segsan_mst m
+            LEFT JOIN dbo.jepum_code j ON m.jepum_cd = j.jepum_cd
+            WHERE m.segsan_dt >= CONVERT(VARCHAR(8), GETDATE() - 6, 112)
+            GROUP BY m.jepum_cd, j.jepum_nm
+            ORDER BY total_amt DESC
+        """
+        cur.execute(sql_pie)
+        pie_rows = cur.fetchall()
+
+        # 3. 최근 실적 상세 로그 (Table 용) - TOP 15
+        sql_logs = """
+            SELECT TOP 15
+                m.segsan_dt, 
+                m.segsan_cd, 
+                ISNULL(j.jepum_nm, m.jepum_cd) as jepum_nm, 
+                ISNULL(m.amt, 0) as amt, 
+                ISNULL(m.sawon_cd, 'SYSTEM') as sawon_cd
+            FROM dbo.segsan_mst m
+            LEFT JOIN dbo.jepum_code j ON m.jepum_cd = j.jepum_cd
+            ORDER BY m.segsan_dt DESC, m.segsan_cd DESC
+        """
+        cur.execute(sql_logs)
+        log_rows = cur.fetchall()
+        
+        conn.close()
+
+        # 데이터 가공
+        trend_data = [{"date": r[0], "amt": float(r[1])} for r in trend_rows]
+        pie_data = [{"name": r[0], "value": float(r[1])} for r in pie_rows]
+        
+        # 총 누적량 계산
+        total_week_amt = sum([item["value"] for item in pie_data])
+        
+        log_data = []
+        for r in log_rows:
+            log_data.append({
+                "date": r[0],
+                "cd": r[1],
+                "jepumNm": r[2],
+                "amt": float(r[3]),
+                "worker": r[4]
+            })
+
+        return jsonify({
+            "summary": {"totalWeekAmt": total_week_amt},
+            "trend": trend_data,
+            "pie": pie_data,
+            "logs": log_data
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_packaging_performance: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+
+# ==============================================================
+# 18. [GET] 구역별 온습도 실시간 모니터링 (작업장/냉동실 공용)
+# ==============================================================
+from datetime import datetime # 파일 상단에 없다면 추가해 주세요.
+
+@data_bp.route('/env-realtime', methods=['GET'])
+def get_env_realtime():
+    v_db = request.args.get("v_db", "34_GN")
+    target_ids = request.args.get("target_ids") # 예: "1001,1002,1003"
+    
+    if not target_ids:
+        return jsonify({"error": "조회할 대상 ID가 필요합니다."}), 400
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: 
+            return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+        
+        id_list = [x.strip() for x in target_ids.split(",")]
+        placeholders = ",".join(["?"] * len(id_list))
+        
+        # ⭐️ cr_dt를 제거하여 쿼리를 단순화했습니다.
+        sql = f"""
+            SELECT auto_id, col_1, col_2, col_3, col_4
+            FROM dbo.smart_last
+            WHERE auto_id IN ({placeholders})
+        """
+        cur.execute(sql, id_list)
+        rows = cur.fetchall()
+        conn.close()
+        
+        result = {}
+        
+        for r in rows:
+            aid = str(r[0])
+            # 인덱스가 딱 4번(절대습도)까지만 깔끔하게 떨어집니다.
+            result[aid] = {
+                "temp": float(r[1]) if r[1] is not None else 0.0,
+                "relHumid": float(r[2]) if r[2] is not None else 0.0,
+                "dewPoint": float(r[3]) if r[3] is not None else 0.0,
+                "absHumid": float(r[4]) if r[4] is not None else 0.0
+            }
+            
+        # ⭐️ 시간 정보는 파이썬 서버의 현재 시간을 바로 생성해서 내려줍니다.
+        result["time"] = datetime.now().strftime('%H:%M:%S')
+        
+        return jsonify(result), 200
+
+    except Exception as e:
+        print(f"Error in get_env_realtime: {str(e)}")
+        return jsonify({"error": f"온습도 조회 오류: {str(e)}"}), 500
+    
+# ==============================================================
+# 19. [GET] 공정별 통합 데이터 정보 조회 (증숙공정 전용 - 신규 API)
+# ==============================================================
+@data_bp.route('/data-info-inquiry-steaming', methods=['GET'])
+def get_data_info_inquiry_steaming():
+    v_db = request.args.get("v_db", "34_GN")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+    only_active = request.args.get("only_active", "true") # ⭐️ 체크박스 상태 파라미터 추가
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        # ⭐️ 가동 중(40도 이상) 필터 조건 동적 추가 (DB는 10배수인 400으로 비교)
+        active_cond = "AND (col_1 >= 400 OR col_2 >= 400)" if only_active.lower() == 'true' else ""
+
+        sql = f"""
+            SELECT 
+                cr_dt, auto_id, 
+                col_1, col_2, col_3, col_4
+            FROM dbo.smart_log
+            WHERE auto_id = '203'
+              AND cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+              {active_cond}
+            ORDER BY cr_dt DESC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for i, r in enumerate(rows):
+            cr_dt = r[0].strftime('%Y-%m-%d %H:%M:%S') if r[0] else ""
+            
+            # 스케일링 적용
+            temp1 = round(float(r[2]) / 10.0, 1) if r[2] is not None else 0.0
+            temp2 = round(float(r[3]) / 10.0, 1) if r[3] is not None else 0.0
+            salinity = round(float(r[4]) / 1000.0, 1) if r[4] is not None else 0.0
+            brix = round(float(r[5]) / 1000.0, 1) if r[5] is not None else 0.0
+
+            data.append({
+                "key": f"steam_{i}", 
+                "date": cr_dt, 
+                "process": "증숙공정", 
+                "equipment": "증숙로 (203)", 
+                "collectedData": f"탱크1 온도: {temp1}°C | 탱크2 온도: {temp2}°C | 염도: {salinity}% | 당도: {brix} Brix"
+            })
+
+        return jsonify(data), 200
+        
+    except Exception as e:
+        print(f"Error in get_data_info_inquiry_steaming: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    
+# ==============================================================
+# 20. [GET] 통계/분석용 Raw 데이터 조회 (증숙공정 전용 - 신규 API)
+# ==============================================================
+@data_bp.route('/analytics-raw-steaming', methods=['GET'])
+def get_analytics_raw_steaming():
+    v_db = request.args.get("v_db", "34_GN")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 실패"}), 500
+        cur = conn.cursor()
+        
+        # 증숙로(203)의 가동 중인 데이터(온도 40도 이상)만 가져옵니다.
+        sql = """
+            SELECT col_1, col_2, col_3, col_4, cr_dt
+            FROM dbo.smart_log
+            WHERE auto_id = '203'
+              AND cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+              AND (col_1 >= 400 OR col_2 >= 400) 
+            ORDER BY cr_dt ASC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for r in rows:
+            # 증숙로 스케일링 규칙 적용 (온도 1/10, 염도/당도 1/1000)
+            data.append({
+                "temp1": round(float(r[0])/10.0, 1) if r[0] else 0,
+                "temp2": round(float(r[1])/10.0, 1) if r[1] else 0,
+                "salinity": round(float(r[2])/1000.0, 1) if r[2] else 0,
+                "brix": round(float(r[3])/1000.0, 1) if r[3] else 0,
+                "time": r[4].strftime('%Y-%m-%d %H:%M') if r[4] else ""
+            })
+        return jsonify(data), 200
+        
+    except Exception as e:
+        print(f"Error in get_analytics_raw_steaming: {str(e)}")
+        return jsonify({"error": str(e)}), 500
