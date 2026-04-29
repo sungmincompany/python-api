@@ -1382,3 +1382,415 @@ def get_analytics_raw_steaming():
     except Exception as e:
         print(f"Error in get_analytics_raw_steaming: {str(e)}")
         return jsonify({"error": str(e)}), 500
+    
+# ==============================================================
+# [GET] 배합공정(301) 실시간 원료 투입량 모니터링 (7가지 원료)
+# ==============================================================
+@data_bp.route('/mixing-room-realtime', methods=['GET'])
+def get_mixing_room_realtime():
+    v_db = request.args.get("v_db", "37_MC")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        sql = """
+            SELECT col_1, col_2, col_3, col_4, col_5, col_6, col_7, cr_dt, on_yn
+            FROM dbo.smart_last
+            WHERE auto_id = '301'
+        """
+        cur.execute(sql)
+        row = cur.fetchone()
+        conn.close()
+
+        if not row:
+            return jsonify({"error": "배합공정 데이터가 없습니다."}), 404
+
+        return jsonify({
+            "water": float(row[0]) / 100.0 if row[0] else 0.0,
+            "egdma": float(row[1]) / 100.0 if row[1] else 0.0,
+            "surface": float(row[2]) / 100.0 if row[2] else 0.0,
+            "ndm": float(row[3]) / 100.0 if row[3] else 0.0,
+            "dispersant": float(row[4]) / 100.0 if row[4] else 0.0,
+            "defoamer": float(row[5]) / 100.0 if row[5] else 0.0,
+            "gdma": float(row[6]) / 100.0 if row[6] else 0.0,
+            "time": row[7].strftime('%H:%M:%S') if row[7] else "",
+            "status": row[8] if row[8] else "N"
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_mixing_room_realtime: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+
+
+# ==============================================================
+# [GET] 피딩공정(303) 실시간 모니터링 (라인믹서 스윙기)
+# ==============================================================
+@data_bp.route('/feeding-realtime', methods=['GET'])
+def get_feeding_realtime():
+    v_db = request.args.get("v_db", "37_MC")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        sql = """
+            SELECT col_1, col_2, col_3, col_4, col_5, col_6, cr_dt, on_yn
+            FROM dbo.smart_last
+            WHERE auto_id = '303'
+        """
+        cur.execute(sql)
+        row = cur.fetchone()
+        conn.close()
+
+        if not row:
+            return jsonify({"error": "피딩공정 데이터가 없습니다."}), 404
+
+        return jsonify({
+            "speed": int(row[0]) if row[0] else 0,          # 속도
+            "count": int(row[1]) if row[1] else 0,          # 횟수
+            "currentPos": float(row[2]) if row[2] else 0.0, # 현재위치
+            "leftPos": float(row[3]) if row[3] else 0.0,    # 좌측이송량
+            "rightPos": float(row[4]) if row[4] else 0.0,   # 우측이송량
+            "centerPos": float(row[5]) if row[5] else 0.0,  # 중간위치
+            "time": row[6].strftime('%H:%M:%S') if row[6] else "",
+            "status": row[7] if row[7] else "N"
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_feeding_realtime: {str(e)}")
+        return jsonify({"error": f"데이터 조회 오류: {str(e)}"}), 500
+
+
+# ==============================================================
+# [미석케미칼] 재단 스태커(304) 실시간 최신 상태 및 오늘 생산 집계 (MSSQL 2008 호환)
+# ==============================================================
+@data_bp.route('/stacker-last-status', methods=['GET'])
+def get_stacker_last_status():
+    v_db = request.args.get("v_db", "37_MC")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        # 1. 최신 가동 상태
+        cur.execute("SELECT on_yn FROM dbo.smart_last WHERE auto_id = '304'")
+        row_last = cur.fetchone()
+        current_status = row_last[0] if row_last else "N"
+
+        # 2. 최신 날짜 찾기
+        cur.execute("SELECT MAX(ymd) FROM dbo.smart_log WHERE auto_id = '304'")
+        max_date_row = cur.fetchone()
+        target_ymd = max_date_row[0] if max_date_row and max_date_row[0] else None
+
+        today_production = 0
+        operation_rate = 0
+
+        if target_ymd:
+            # 3. MSSQL 2008 호환 쿼리 (LAG 대신 ROW_NUMBER와 SELF JOIN 사용)
+            sql_today = """
+                WITH OrderedLog AS (
+                    SELECT 
+                        col_1,
+                        cr_dt,
+                        ROW_NUMBER() OVER (ORDER BY cr_dt ASC) AS rn
+                    FROM dbo.smart_log
+                    WHERE auto_id = '304' AND ymd = ? 
+                      AND hh BETWEEN '08' AND '17'
+                ),
+                DeltaLog AS (
+                    SELECT 
+                        curr.col_1,
+                        ISNULL(curr.col_1 - prev.col_1, 0) AS prod_delta
+                    FROM OrderedLog curr
+                    LEFT JOIN OrderedLog prev ON curr.rn = prev.rn + 1
+                )
+                SELECT 
+                    ISNULL(SUM(CASE WHEN prod_delta > 0 THEN prod_delta ELSE 0 END), 0) AS today_production,
+                    COUNT(*) AS total_mins,
+                    SUM(CASE WHEN prod_delta > 0 THEN 1 ELSE 0 END) AS run_mins
+                FROM DeltaLog
+            """
+            cur.execute(sql_today, (target_ymd,))
+            row_today = cur.fetchone()
+
+            if row_today:
+                today_production = int(row_today[0]) if row_today[0] is not None else 0
+                total_mins = int(row_today[1]) if row_today[1] is not None else 0
+                run_mins = int(row_today[2]) if row_today[2] is not None else 0
+                operation_rate = round((run_mins / total_mins * 100), 1) if total_mins > 0 else 0
+
+        conn.close()
+
+        return jsonify({
+            "today_production": today_production, 
+            "operation_rate": operation_rate,
+            "status": current_status
+        }), 200
+
+    except Exception as e:
+        print(f"Error in get_stacker_last_status: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+
+# ==============================================================
+# [미석케미칼] 재단 스태커(304) 시간대별 생산량 추이 (MSSQL 2008 호환)
+# ==============================================================
+@data_bp.route('/stacker-production-trend', methods=['GET'])
+def get_stacker_production_trend():
+    v_db = request.args.get("v_db", "37_MC")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        cur.execute("SELECT MAX(ymd) FROM dbo.smart_log WHERE auto_id = '304'")
+        max_date_row = cur.fetchone()
+        target_ymd = max_date_row[0] if max_date_row and max_date_row[0] else ""
+
+        # MSSQL 2008 호환 쿼리 (LAG 대체)
+        sql = """
+            WITH OrderedLog AS (
+                SELECT 
+                    hh, mm, col_1, cr_dt,
+                    ROW_NUMBER() OVER (ORDER BY cr_dt ASC) AS rn
+                FROM dbo.smart_log
+                WHERE auto_id = '304' AND ymd = ?
+            ),
+            DiffLog AS (
+                SELECT 
+                    curr.hh, curr.mm, curr.col_1, curr.cr_dt,
+                    ISNULL(curr.col_1 - prev.col_1, 0) AS delta
+                FROM OrderedLog curr
+                LEFT JOIN OrderedLog prev ON curr.rn = prev.rn + 1
+            )
+            SELECT TOP 60 hh, mm, col_1, delta
+            FROM DiffLog
+            WHERE delta > 0
+            ORDER BY cr_dt DESC
+        """
+        cur.execute(sql, (target_ymd,))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for r in rows:
+            data.append({
+                "time": f"{r[0]}:{r[1]}",
+                "count": int(r[2]) if r[2] else 0,
+                "production": int(r[3]) if r[3] else 0
+            })
+        return jsonify(data), 200
+
+    except Exception as e:
+        print(f"Error in get_stacker_production_trend: {str(e)}")
+        return jsonify({"error": str(e)}), 500
+    
+# ==============================================================
+# [GET] 37_MC 데이터 정보 조회 (DataInfoInquiry 용)
+# ==============================================================
+@data_bp.route('/data-info-inquiry-mc', methods=['GET'])
+def get_data_info_inquiry_mc():
+    v_db = request.args.get("v_db", "37_MC")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+    process_type = request.args.get("process", "all")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+
+        # 301(배합), 302(슬러리), 303(피딩), 304(재단) 모두 조회
+        sql = """
+            SELECT cr_dt, auto_id, col_1, col_2, col_3, col_4, col_5, col_6, col_7
+            FROM dbo.smart_log
+            WHERE cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+            ORDER BY cr_dt DESC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for i, r in enumerate(rows):
+            cr_dt = r[0].strftime('%Y-%m-%d %H:%M:%S') if r[0] else ""
+            auto_id = str(r[1])
+            
+            if auto_id == '301' and process_type in ['all', '301']:
+                water = float(r[2]) / 100.0 if r[2] else 0
+                egdma = float(r[3]) / 100.0 if r[3] else 0
+                surface = float(r[4]) / 100.0 if r[4] else 0
+
+                data.append({
+                    "key": f"301_{i}", "date": cr_dt, "process": "배합공정", "equipment": "자동계량 배합기 (301)", 
+                    "collectedData": f"증류수: {water:.2f}kg | 가교제: {egdma:.2f}kg | 표면처리제: {surface:.2f}kg"
+                })
+            elif auto_id == '302' and process_type in ['all', '302']:
+                status = "가동 중" if r[2] == 1 else "대기"
+                data.append({
+                    "key": f"302_{i}", "date": cr_dt, "process": "슬러리제조", "equipment": "슬러리제조기 (302)", 
+                    "collectedData": f"설비상태: {status}"
+                })
+            elif auto_id == '303' and process_type in ['all', '303']:
+                data.append({
+                    "key": f"303_{i}", "date": cr_dt, "process": "피딩공정", "equipment": "라인믹서 스윙기 (303)", 
+                    "collectedData": f"피딩속도: {int(r[2])} rpm | 현재위치: {float(r[4]):.1f}"
+                })
+            elif auto_id == '304' and process_type in ['all', '304']:
+                data.append({
+                    "key": f"304_{i}", "date": cr_dt, "process": "재단공정", "equipment": "재단 스태커 (304)", 
+                    "collectedData": f"누적생산량: {int(r[2])} EA"
+                })
+
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+
+# ==============================================================
+# [GET] 37_MC 통계/분석용 Raw 데이터 조회 (Regression, SPC 용)
+# ==============================================================
+@data_bp.route('/analytics-raw-mc', methods=['GET'])
+def get_analytics_raw_mc():
+    v_db = request.args.get("v_db", "37_MC")
+    from_dt = request.args.get("from_dt")
+    to_dt = request.args.get("to_dt")
+
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 실패"}), 500
+        cur = conn.cursor()
+        
+        # 회귀분석을 위해 같은 시간대(분)의 배합데이터(301)와 피딩데이터(303)를 JOIN하여 가져옵니다.
+        sql = """
+            SELECT 
+                t1.cr_dt,
+                t1.col_2 AS egdma,    -- 가교제 투입량 (301)
+                t1.col_7 AS gdma,     -- GDMA 투입량 (301)
+                t3.col_1 AS speed     -- 피딩 속도 (303)
+            FROM (SELECT ymd, hh, mm, col_2, col_7, cr_dt FROM dbo.smart_log WHERE auto_id = '301') t1
+            INNER JOIN (SELECT ymd, hh, mm, col_1 FROM dbo.smart_log WHERE auto_id = '303') t3
+              ON t1.ymd = t3.ymd AND t1.hh = t3.hh AND t1.mm = t3.mm
+            WHERE t1.cr_dt >= CONVERT(DATETIME, ?, 120) 
+              AND t1.cr_dt <= CONVERT(DATETIME, ? + ' 23:59:59', 120)
+            ORDER BY t1.cr_dt ASC
+        """
+        cur.execute(sql, (from_dt, to_dt))
+        rows = cur.fetchall()
+        conn.close()
+
+        data = []
+        for r in rows:
+            data.append({
+                "time": r[0].strftime('%Y-%m-%d %H:%M') if r[0] else "",
+                "egdma": float(r[1]) / 100.0 if r[1] else 0, # ⭐️ 가교제 투입량 스케일링
+                "gdma": float(r[2]) / 100.0 if r[2] else 0,  # ⭐️ GDMA 투입량 스케일링
+                "speed": float(r[3]) if r[3] else 0          # 피딩속도는 원래 정수(rpm)이므로 그대로 둠
+            })
+        return jsonify(data), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+# ==============================================================
+# [미석케미칼] 공정별 통합 가동/비가동 현황 조회 (날짜 자동감지 및 2008 호환)
+# ==============================================================
+@data_bp.route('/operation-status', methods=['GET'])
+def get_operation_status():
+    v_db = request.args.get("v_db", "37_MC")
+    target_date = request.args.get("date") # 'YYYY-MM-DD'
+    
+    try:
+        conn = get_db_connection(v_db)
+        if conn is None: return jsonify({"error": "DB 연결 실패"}), 500
+        cur = conn.cursor()
+        
+        # 1. ⭐️ 날짜가 안 들어왔을 경우, DB에서 가장 최신 데이터 날짜를 자동으로 찾음
+        if not target_date:
+            cur.execute("SELECT MAX(ymd) FROM dbo.smart_log WHERE auto_id IN ('301', '302', '303', '304')")
+            max_date_row = cur.fetchone()
+            target_ymd = max_date_row[0] if max_date_row and max_date_row[0] else None
+        else:
+            # 들어온 날짜를 YYYYMMDD 포맷으로 변환
+            target_ymd = target_date.replace('-', '')
+
+        if not target_ymd:
+            conn.close()
+            return jsonify({"timeline": [], "summary": {}}), 200
+
+        # 2. 특정 일자의 4개 공정 로그 조회
+        sql = """
+            SELECT 
+                hh, mm, auto_id, 
+                ISNULL(col_1, 0), ISNULL(col_2, 0), ISNULL(col_3, 0), 
+                ISNULL(col_4, 0), ISNULL(col_5, 0), ISNULL(col_6, 0), ISNULL(col_7, 0)
+            FROM dbo.smart_log
+            WHERE ymd = ?
+              AND auto_id IN ('301', '302', '303', '304')
+            ORDER BY hh ASC, mm ASC, cr_dt ASC
+        """
+        cur.execute(sql, (target_ymd,))
+        rows = cur.fetchall()
+        conn.close()
+        
+        # 3. 시간별(분 단위)로 그룹화 및 가동 판정
+        time_map = {}
+        prev_304_qty = {} # 설비별 누적량 체크용
+        
+        for r in rows:
+            time_str = f"{r[0]}:{r[1]}"
+            aid = str(r[2])
+            # 원시 데이터(정수) 로드
+            c1, c2, c3, c4, c5, c6, c7 = float(r[3]), float(r[4]), float(r[5]), float(r[6]), float(r[7]), float(r[8]), float(r[9])
+            
+            if time_str not in time_map:
+                time_map[time_str] = {"time": time_str, "301": 0, "302": 0, "303": 0, "304": 0}
+                
+            # ⭐️ 공정별 가동/비가동 판정 (스케일링과 상관없이 0보다 크면 가동)
+            if aid == '301':
+                # 배합: 7가지 원료 중 하나라도 정수값이 존재하면 가동
+                time_map[time_str]["301"] = 1 if (c1+c2+c3+c4+c5+c6+c7) > 0 else 0
+            elif aid == '302':
+                # 슬러리: 상태값이 1이면 가동
+                time_map[time_str]["302"] = 1 if c1 == 1 else 0
+            elif aid == '303':
+                # 피딩: 속도가 10 rpm 초과면 가동
+                time_map[time_str]["303"] = 1 if c1 > 10 else 0 
+            elif aid == '304':
+                # 재단: 이전 분 대비 누적수량이 증가했으면 가동
+                if aid in prev_304_qty and c1 > prev_304_qty[aid]:
+                    time_map[time_str]["304"] = 1
+                else:
+                    time_map[time_str]["304"] = 0
+                prev_304_qty[aid] = c1
+                
+        # 배열 변환 및 가동률 요약
+        timeline = list(time_map.values())
+        summary = {
+            "301": {"run": 0, "stop": 0, "rate": 0},
+            "302": {"run": 0, "stop": 0, "rate": 0},
+            "303": {"run": 0, "stop": 0, "rate": 0},
+            "304": {"run": 0, "stop": 0, "rate": 0},
+        }
+        
+        for item in timeline:
+            for aid in ["301", "302", "303", "304"]:
+                if item[aid] == 1: summary[aid]["run"] += 1
+                else: summary[aid]["stop"] += 1
+                
+        for aid in ["301", "302", "303", "304"]:
+            total = summary[aid]["run"] + summary[aid]["stop"]
+            summary[aid]["rate"] = round((summary[aid]["run"] / total * 100), 1) if total > 0 else 0
+            
+        return jsonify({
+            "timeline": timeline,
+            "summary": summary,
+            "target_date": f"{target_ymd[:4]}-{target_ymd[4:6]}-{target_ymd[6:8]}"
+        }), 200
+        
+    except Exception as e:
+        print(f"Error in get_operation_status: {str(e)}")
+        return jsonify({"error": str(e)}), 500
